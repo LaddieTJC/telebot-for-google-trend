@@ -1,7 +1,7 @@
-# telebot-for-google-trend
+# Telegram Bot for Google Trend
 
 ## Introduction
-Hi, I am Laddie and this is my first Telegram bot. The steps below will teach you how to run the bot. I will be happy to receive any feedback from the SGAG team to help me improve on my Telegram bot skills.
+Hi, I'm Laddie and I've created my first Telegram bot. This bot uses Selenium to scrape data from the Google Trends website and runs in headless mode. To use the bot, you'll need to download a chrome.exe file that corresponds to your Google Chrome version. Follow the steps below to get started, and feel free to give me feedback so I can improve my Telegram bot skills.
 
 ## Check your Google Chrome Version
 I am using Selenium to scrape from Google Trend website and running it on headless mode. A chrome.exe file is needed according to your Google Chrome version. 
