@@ -60,21 +60,8 @@ def stackQueryHandler(update, context):
         tradeOff = "*Trade-offs:*\n\n-*LAMP*: good for low-cost and easily customizable development, but may have slower performance and require more manual configuration.\n-*MEAN*: great for real-time data processing and high performance, but may require more technical expertise and have limited community support.\n-*MERN*: easy to learn and good for complex user interfaces, but may be difficult to debug and have difficulty handling large amounts of data.\n-*AWS*: offers a wide range of services and a large community of users, but can be expensive and have a steep learning curve.\n-*GCP*: easy to use and offers advanced machine learning capabilities, but can be expensive and have limited support for some services.\n-*Azure*: easy to use and offers excellent hybrid cloud capabilities, but can be expensive and require more technical expertise."
         context.bot.send_message(chat_id=chat_id, text=tradeOff, parse_mode=telegram.ParseMode.MARKDOWN)
 
-def levelFive(update, context):
-    levelFourText = "Hi, This is level four of the marking scheme. Click on the button to view more."
-    chat_id = update.effective_chat.id
-    context.bot.send_message(chat_id=chat_id, text=levelFourText, parse_mode=telegram.ParseMode.MARKDOWN)
-    buttons = [[InlineKeyboardButton('Monetization Strategies', callback_data='monetization')],[InlineKeyboardButton('Cost reduction strategies', callback_data='reduce')],[InlineKeyboardButton('Cost avoidance strategies', callback_data='avoid')]]
-    
-    context.bot.send_message(chat_id=chat_id, reply_markup=InlineKeyboardMarkup(buttons), text='Choose one of the options')
-
-
-def monetizationQueryHandler(update, context):
-    query = update.callback_query.data
-    update.callback_query.answer()
-    chat_id = update.effective_chat.id
     if 'monetization' in query:
-        moOutput = "-You can offer premium features such as historical data, data visualization, and data analysis to users who are willing to pay for these additional features.\n-Another monetization strategy is to partner with businesses that require trend data for their marketing campaigns, advertising, and product development.\nYou can also consider charging for access to the API, especially if the API becomes very popular."
+        moOutput = "-You can offer premium features such as historical data, data visualization, and data analysis to users who are willing to pay for these additional features.\n-Another monetization strategy is to partner with businesses that require trend data for their marketing campaigns, advertising, and product development.\n-You can also consider charging for access to the API, especially if the API becomes very popular."
         context.bot.send_message(chat_id=chat_id, text=moOutput, parse_mode=telegram.ParseMode.MARKDOWN)
 
 
@@ -85,6 +72,23 @@ def monetizationQueryHandler(update, context):
     if 'avoid' in query:
         avoidOutput = "-One cost avoidance strategy is to use serverless architecture to avoid the costs of maintaining and managing servers.\n-You can also use caching to reduce the number of requests made to the Google Trends website, thereby reducing bandwidth costs.\n-Additionally, you can monitor your API usage and identify any bottlenecks or inefficiencies that may lead to increased costs, and address them accordingly."
         context.bot.send_message(chat_id=chat_id, text=avoidOutput, parse_mode=telegram.ParseMode.MARKDOWN)
+
+def levelFive(update, context):
+    levelFourText = "Hi, This is level four of the marking scheme. Click on the button to view more."
+    chat_id = update.effective_chat.id
+    context.bot.send_message(chat_id=chat_id, text=levelFourText, parse_mode=telegram.ParseMode.MARKDOWN)
+    buttons = [[InlineKeyboardButton('Monetization Strategies', callback_data='monetization')],[InlineKeyboardButton('Cost reduction strategies', callback_data='reduce')],[InlineKeyboardButton('Cost avoidance strategies', callback_data='avoid')]]
+    
+    context.bot.send_message(chat_id=chat_id, reply_markup=InlineKeyboardMarkup(buttons), text='Choose one of the options')
+    
+
+
+def monetizationQueryHandler(update, context):
+    query = update.callback_query.data
+    update.callback_query.answer()
+    chat_id = update.effective_chat.id
+    
+        
 dispatcher.add_handler(CommandHandler('level4', levelFour))
 dispatcher.add_handler(CommandHandler('level5', levelFive))
 dispatcher.add_handler(CallbackQueryHandler(stackQueryHandler))
